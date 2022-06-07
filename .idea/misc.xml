@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Project/LiveProject/app/src/main/res/drawable/ripple_effect.xml" value="0.17" />
         <entry key="..\:/Project/LiveProject/app/src/main/res/layout/dialog_layout.xml" value="0.18" />
         <entry key="..\:/Project/LiveProject/app/src/main/res/layout/fragment_second.xml" value="0.1" />
+        <entry key="..\:/Project/LiveProject/app/src/main/res/layout/ripple_animation.xml" value="0.1921875" />
       </map>
     </option>
   </component>
