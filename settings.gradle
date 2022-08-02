@@ -16,3 +16,4 @@ rootProject.name = "LiveProject"
 include ':app'
 include ':mvipatterndemo'
 include ':daggersample'
+include ':dagger2demo'
