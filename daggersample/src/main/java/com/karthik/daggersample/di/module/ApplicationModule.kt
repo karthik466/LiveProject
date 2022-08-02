@@ -1,4 +1,17 @@
 package com.karthik.daggersample.di.module
 
-class ApplicationModule {
+import android.content.Context
+import com.karthik.daggersample.data.AppSharedPreference
+import dagger.Module
+import dagger.Provides
+import javax.inject.Singleton
+
+@Module
+class ApplicationModule constructor(private val context: Context) {
+
+    @Singleton
+    @Provides
+    fun provideApplicationPreference():AppSharedPreference{
+        return AppSharedPreference(context)
+    }
 }

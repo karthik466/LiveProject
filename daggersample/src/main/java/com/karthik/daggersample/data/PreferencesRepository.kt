@@ -1,8 +1,9 @@
 package com.karthik.daggersample.data
 
 import com.karthik.daggersample.data.model.UserDetails
+import javax.inject.Inject
 
-class PreferencesRepository constructor(
+class PreferencesRepository @Inject constructor(
     private val appPreference: AppSharedPreference
 ) {
 

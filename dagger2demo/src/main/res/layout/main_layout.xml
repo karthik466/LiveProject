@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#009688"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/headerTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:text="Spiritual Teachers App"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/app_name"
+        android:src="@mipmap/ic_launcher_round" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/usernameTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="Username"
+            android:textColor="@color/white" />
+
+        <EditText
+            android:id="@+id/numberTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/usernameTxt"
+            android:layout_margin="8dp"
+            android:hint="Number"
+            android:inputType="number"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/saveBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/numberTxt"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_toStartOf="@+id/getBtn"
+            android:layout_toLeftOf="@+id/getBtn"
+            android:text="SAVE" />
+
+        <Button
+            android:id="@+id/getBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/numberTxt"
+            android:layout_alignEnd="@+id/numberTxt"
+            android:layout_alignRight="@+id/numberTxt"
+            android:text="GET" />
+    </RelativeLayout>
+
+</LinearLayout>
