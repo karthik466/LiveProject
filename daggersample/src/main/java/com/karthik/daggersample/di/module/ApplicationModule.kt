@@ -11,6 +11,11 @@ class ApplicationModule constructor(private val context: Context) {
 
     @Singleton
     @Provides
+    fun provideContext():Context{
+        return context
+    }
+    @Singleton
+    @Provides
     fun provideApplicationPreference():AppSharedPreference{
         return AppSharedPreference(context)
     }
