@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.liveproject">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -15,15 +16,26 @@
         android:theme="@style/Theme.LiveProject"
         tools:targetApi="31">
         <activity
-            android:name=".ripple.RippleActivity"
+            android:name=".ComposeActivity"
             android:exported="true"
-            android:label="@string/app_name"
+            android:label="@string/title_activity_compose"
             android:theme="@style/Theme.LiveProject">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".ripple.RippleActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.LiveProject">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
     </application>
 

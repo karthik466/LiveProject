@@ -1,8 +1,6 @@
 package com.karthik.daggersample.di.module
 
-import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
-import com.karthik.daggersample.SampleApplication
 import com.karthik.daggersample.presentation.LoginActivity
 import com.karthik.daggersample.presentation.viewmodel.LoginViewModel
 import dagger.Binds
@@ -13,7 +11,7 @@ import dagger.android.AndroidInjector
 import javax.inject.Singleton
 
 
-interface AppInjectorModule {
+interface AppInjectorComponent {
 
     fun appInject()
 
@@ -37,26 +35,38 @@ interface UIViewModelModule1 {
 @Component(
     modules = [UIViewModelModule::class, UIViewModelModule1::class,
         ApplicationModule::class,
-        ActivityModule::class,
+        //ActivityModule::class,
         AndroidInjectionModule::class],
+    dependencies = [AppInjectorComponent::class]
 )
-interface LoginActivityComponent {
-    fun inject(application: SampleApplication)
+interface LoginActivityComponent : AndroidInjector<LoginActivity>{
+   // fun inject(application: SampleApplication)
+
+    @Component.Builder
+    abstract class Builder: AndroidInjector<LoginActivity>{
+
+        abstract fun plus(component: AppInjectorComponent):Builder
+
+        abstract fun plus():LoginActivityComponent
+
+    }
+
+
     //fun injectActivity(activity: LoginActivity)
     //fun providePreference(): SharedPreferences
 
-    @Component.Builder
-    interface Builder  {
-        //abstract fun append(component: AppInjectorModule): Builder
-
-        fun appModule(module: ApplicationModule): Builder
-
-
-        fun build(): LoginActivityComponent
-
-
-    }
-    // fun build():LoginActivityComponent
+//    @Component.Builder
+//    interface Builder  {
+//        //abstract fun append(component: AppInjectorModule): Builder
+//
+//        fun appModule(module: ApplicationModule): Builder
+//
+//
+//        fun build(): LoginActivityComponent
+//
+//
+//    }
+//    // fun build():LoginActivityComponent
 
 
 }
@@ -64,7 +74,7 @@ interface LoginActivityComponent {
 
 object Navigation {
 
-    fun init(component: AppInjectorModule) {
+    fun init(component: AppInjectorComponent) {
 
 
 

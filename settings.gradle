@@ -13,7 +13,7 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "LiveProject"
-//include ':app'
+include ':app'
 //include ':mvipatterndemo'
-include ':daggersample'
+//include ':daggersample'
 //include ':dagger2demo'

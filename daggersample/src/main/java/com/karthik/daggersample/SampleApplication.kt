@@ -30,17 +30,17 @@ class SampleApplication : Application(), HasAndroidInjector {
 
     private fun createAppComponent() {
         //Way 1: General way to add component
-        val appComponent = DaggerAppComponent.builder()
-            .applicationModule(ApplicationModule(this))
-            .build()
-        appComponent.inject(this)
+//        val appComponent = DaggerAppComponent.builder()
+//            .applicationModule(ApplicationModule(this))
+//            .build()
+//        appComponent.inject(this)
 
 
 //        //Way 2: Using Component Build
-//        val component = DaggerLoginActivityComponent.builder()
-//            .appModule(ApplicationModule(this))
-//            .build()
-//        component.inject(this)
+        val component = DaggerLoginActivityComponent.builder()
+            .appModule(ApplicationModule(this))
+            .build()
+        component.inject(this)
 
     }
 

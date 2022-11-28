@@ -4,9 +4,9 @@ import com.karthik.daggersample.presentation.LoginActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
-@Module
+//@Module
 abstract class ActivityModule {
 
-    @ContributesAndroidInjector
+    //@ContributesAndroidInjector
     abstract fun contributesLoginActivityInject(): LoginActivity
 }
