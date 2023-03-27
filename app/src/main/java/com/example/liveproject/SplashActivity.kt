@@ -5,6 +5,7 @@ import android.content.pm.ShortcutManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.widget.Button
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.pm.ShortcutInfoCompat
@@ -13,12 +14,25 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 
 @RequiresApi(Build.VERSION_CODES.N_MR1)
 class SplashActivity : AppCompatActivity() {
+
+    private lateinit var btnSubmit : Button
     @RequiresApi(Build.VERSION_CODES.R)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
         setContentView(R.layout.activity_splash)
+        btnSubmit = findViewById(R.id.btnSubmit)
         setupShortcuts()
+
+
+        btnSubmit.setOnClickListener {
+            ShortcutUtil.requestPinShortcutForReservation(
+                this, // Context
+                "1",
+                "My Stay Dago",
+                "Open my stay Bobobox Pods Dago",
+            )
+        }
     }
 
 
@@ -53,6 +67,7 @@ class SplashActivity : AppCompatActivity() {
             .setIntent(Intent(Intent.ACTION_VIEW, Uri.parse("https://www.gmail.com"))).build())
 
         shortcutsList.add(ShortcutInfoCompat.Builder(this,"6")
+
             .setShortLabel("Open Dialer ")
             .setLongLabel("Open Dialer  ")
             .setRank(5)
