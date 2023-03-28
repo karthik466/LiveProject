@@ -3,6 +3,10 @@ package com.example.liveproject
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ShortcutManager
+import android.os.Build
+import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.content.pm.ShortcutInfoCompat
 import androidx.core.content.pm.ShortcutManagerCompat
 import androidx.core.graphics.drawable.IconCompat
@@ -44,6 +48,7 @@ object ShortcutUtil {
     /**
      * Request creating Pinned App Shortcut for a reservation.
      */
+    @RequiresApi(Build.VERSION_CODES.N_MR1)
     @Throws(Exception::class)
     fun requestPinShortcutForReservation(
         context: Context,
@@ -53,32 +58,52 @@ object ShortcutUtil {
         requestCode: Int = 1,
     ) {
         if (ShortcutManagerCompat.isRequestPinShortcutSupported(context)) {
-            val shortcutInfo = createShortcutInfoForReservation(
-                context,
-                reservationId,
-                shortLabel,
-                longLabel,
-            )
+            if(!checkIsShortcutAdded(context,reservationId)) {
+                val shortcutInfo = createShortcutInfoForReservation(
+                    context,
+                    reservationId,
+                    shortLabel,
+                    longLabel,
+                )
 
-            val intent = ShortcutManagerCompat.createShortcutResultIntent(
-                context,
-                shortcutInfo,
-            )
+                val intent = ShortcutManagerCompat.createShortcutResultIntent(
+                    context,
+                    shortcutInfo,
+                )
 
-            val successCallback = PendingIntent.getBroadcast(
-                context,
-                requestCode,
-                intent,
-                PendingIntent.FLAG_UPDATE_CURRENT,
-            )
+                val successCallback = PendingIntent.getBroadcast(
+                    context,
+                    requestCode,
+                    intent,
+                    PendingIntent.FLAG_UPDATE_CURRENT,
+                )
 
-            ShortcutManagerCompat.requestPinShortcut(
-                context,
-                shortcutInfo,
-                successCallback.intentSender,
-            )
+                ShortcutManagerCompat.requestPinShortcut(
+                    context,
+                    shortcutInfo,
+                    successCallback.intentSender,
+                )
+            }else{
+                Toast.makeText(context, "$reservationId is already added",Toast.LENGTH_SHORT).show()
+            }
         } else {
             throw Exception("Pinned App Shortcut not supported")
         }
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.N_MR1)
+    private fun checkIsShortcutAdded(context: Context, reservationId: String):Boolean{
+        val shortcutManager = context.getSystemService(Context.SHORTCUT_SERVICE) as ShortcutManager
+        var hasShortcutFound = false
+       for(shortcut in shortcutManager.pinnedShortcuts){
+           if(shortcut.id.contains(reservationId,false)){
+               hasShortcutFound =true
+               break
+           }
+       }
+
+
+        return hasShortcutFound
     }
 }
