@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">App Acction Demo</string>
+    <string name="shortcut_short_insert_label">short label</string>
+    <string-array name="weather_set" >
+        <item>weather</item>
+        <item>meteorology</item>
+    </string-array>
+</resources>
