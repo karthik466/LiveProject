@@ -44,4 +44,9 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="title_activity_compose">ComposeActivity</string>
+    <string-array name="weather_set">
+        <item>weather</item>
+        <item>meteorology</item>
+    </string-array>
+    <string name="shortcut_short_insert_label">Short Cut Name</string>
 </resources>
